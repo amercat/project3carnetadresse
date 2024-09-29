@@ -20,7 +20,9 @@ class AppFixtures extends Fixture
             $contact = $this->createContact(
                 $faker->lastName(),
                 $faker->firstName(),
-                $faker->phoneNumber()
+                $faker->phoneNumber(),
+                $faker->address()
+
             );
             $manager->persist($contact);
         }
@@ -28,14 +30,15 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function createContact(string $nom, string $prenom, string $telephone): Contact
+    private function createContact(string $nom, string $prenom, string $telephone, string $adresse): Contact
     {
         $contact = new Contact();
 
         $contact
             ->setNom($nom)
             ->setPrenom($prenom)
-            ->setTelephone($telephone);
+            ->setTelephone($telephone)
+            ->setAdresse($adresse);
 
         return $contact;
     }

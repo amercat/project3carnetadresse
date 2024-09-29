@@ -22,6 +22,9 @@ class Contact
     #[ORM\Column(length: 255)]
     private ?string $telephone = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Contact
     public function setTelephone(string $telephone): static
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): static
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
